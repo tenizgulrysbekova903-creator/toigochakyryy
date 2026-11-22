@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Улан & Толкунай — Тойго чакыруу</title>
+<style>
+:root {
+  --cream:#fbf5ed;
+  --gold:#a97936;
+  --brown:#59412d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--brown);
+  background:radial-gradient(ellipse at top,#fffefa,#fbf5ed 62%,#f1e5d5);
+  font-family:Georgia,"Times New Roman",serif;
+}
+.top-line{
+  height:5px;
+  background:linear-gradient(90deg,#916124,#f0dcae,#a97936);
+}
+.hero{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:36px 18px;
+  text-align:center;
+}
+.hero-inner{max-width:650px}
+.eyebrow{color:#987344;line-height:1.7}
+h1{
+  color:var(--gold);
+  font-size:clamp(48px,11vw,82px);
+  font-weight:400;
+  font-style:italic;
+}
+.amp{display:block;font-size:.62em}
+.hero-date{font-size:18px;letter-spacing:.12em}
+.ornament{color:#b58a4c;margin:20px;font-size:25px}
+.button,.music-control{
+  border:1px solid #b58a4c;
+  border-radius:999px;
+  padding:13px 25px;
+  background:#fffaf2;
+  color:#79572e;
+  font:inherit;
+  cursor:pointer;
+}
+.music-control{
+  position:fixed;
+  z-index:20;
+  right:16px;
+  bottom:16px;
+  padding:10px 15px;
+}
+.section{padding:55px 18px}
+.section-title{
+  text-align:center;
+  color:#94682e;
+  font-size:clamp(27px,6vw,39px);
+  font-weight:400;
+}
+.section-sub{
+  max-width:600px;
+  margin:20px auto 30px;
+  text-align:center;
+  line-height:1.8;
+}
+.gallery{
+  width:min(100%,920px);
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+}
+.art{
+  margin:0;
+  padding:9px;
+  border:1px solid #d7bd8e;
+  background:#fffaf4;
+  box-shadow:0 10px 28px #6f51201a;
+}
+.art img{display:block;width:100%;height:auto}
+.art.wide{
+  grid-column:1/-1;
+  width:min(100%,570px);
+  justify-self:center;
+}
+.details{
+  background:#f4eadcaa;
+  border-top:1px solid #e0cda9;
+  border-bottom:1px solid #e0cda9;
+}
+.detail-grid{
+  max-width:780px;
+  margin:30px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+.detail{
+  padding:22px 12px;
+  border:1px solid #ddc79f;
+  background:#fffaf2bd;
+  text-align:center;
+  line-height:1.7;
+}
+.detail strong{
+  display:block;
+  color:#8e642f;
+  font-weight:400;
+}
+.detail-icon{font-size:27px;color:#b58a4c}
+.map-wrap{text-align:center;margin:25px}
+.map-link{color:#8b632d}
+.closing{
+  padding:65px 18px 82px;
+  text-align:center;
+}
+.closing-note{font-size:18px;line-height:1.8}
+footer{
+  padding:20px;
+  text-align:center;
+  color:#9a8468;
+  border-top:1px solid #e2d2b8;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:.8s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+@media(max-width:620px){
+  .gallery{grid-template-columns:1fr;max-width:480px}
+  .art.wide{width:100%}
+  .detail-grid{grid-template-columns:1fr;max-width:430px}
+  .section{padding:44px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="top-line"></div>
+
+<audio id="music" loop preload="auto">
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-control" id="musicButton">
+♫ Музыканы күйгүзүү
+</button>
+
+<header class="hero">
+  <div class="hero-inner reveal visible">
+    <p class="eyebrow">
+      Сиздерди кубанычыбызга ортоктош болууга чакырабыз
+    </p>
+    <div class="ornament">❦</div>
+    <h1>Улан <span class="amp">&amp;</span> Толкунай</h1>
+    <p class="hero-date">3-ДЕКАБРЬ · 16:00</p>
+    <button class="button" id="openInvitation">
+      Чакырууну ачуу
+    </button>
+    <div class="ornament">♡</div>
+  </div>
+</header>
+
+<main>
+
+<section class="section" id="invitation">
+  <h2 class="section-title reveal">Сиздерди күтөбүз!</h2>
+  <p class="section-sub reveal">
+    Жүрөгүбүздө өзгөчө орун алган кубанычтуу күнүбүздү
+    сиздер менен бөлүшүүнү каалайбыз.
+    Той төрүбүзгө келип, бактыбызга орток болуңуздар!
+  </p>
+
+  <div class="gallery">
+    <figure class="art wide reveal">
+      <img src="assets/invitation-text.png" alt="Чакыруу тексти">
+    </figure>
+
+    <figure class="art reveal">
+      <img src="assets/couple-names.png" alt="Улан жана Толкунай">
+    </figure>
+
+    <figure class="art reveal">
+      <img src="assets/date-time.png" alt="Той күнү жана убактысы">
+    </figure>
+
+    <figure class="art wide reveal">
+      <img src="assets/address.png" alt="Тойдун дареги">
+    </figure>
+  </div>
+</section>
+
+<section class="section details">
+  <h2 class="section-title reveal">Тойдун маалыматы</h2>
+
+  <div class="detail-grid">
+    <div class="detail reveal">
+      <span class="detail-icon">♡</span>
+      <strong>Күнү</strong>
+      3-декабрь
+    </div>
+
+    <div class="detail reveal">
+      <span class="detail-icon">◷</span>
+      <strong>Башталышы</strong>
+      16:00
+    </div>
+
+    <div class="detail reveal">
+      <span class="detail-icon">⌖</span>
+      <strong>Дареги</strong>
+      Балыкчы шаары,<br>Айдаркен кафеси
+    </div>
+  </div>
+
+  <div class="map-wrap reveal">
+    <a class="map-link"
+       href="https://www.google.com/maps/search/?api=1&query=Айдаркен%20кафеси%20Балыкчы"
+       target="_blank" rel="noopener">
+      Картадан даректи көрүү ↗
+    </a>
+  </div>
+</section>
+
+<section class="closing" id="hosts">
+  <div class="ornament reveal">❦</div>
+  <p class="closing-note reveal">
+    Сиздерди чын жүрөктөн күтөбүз!<br>
+    Урматтоо менен, той ээлери
+  </p>
+
+  <figure class="art wide reveal">
+    <img src="assets/hosts.png"
+         alt="Той ээлери Акылбек жана Гулбара">
+  </figure>
+</section>
+
+</main>
+
+<footer>Улан &amp; Толкунай · 3-декабрь</footer>
+
+<script>
+const music = document.getElementById("music");
+const musicButton = document.getElementById("musicButton");
+
+async function toggleMusic(){
+  if(music.paused){
+    try{
+      await music.play();
+      musicButton.textContent="♫ Музыканы токтотуу";
+    }catch(e){
+      musicButton.textContent="Музыка ачылган жок";
+    }
+  }else{
+    music.pause();
+    musicButton.textContent="♫ Музыканы күйгүзүү";
+  }
+}
+
+musicButton.addEventListener("click",toggleMusic);
+
+document.getElementById("openInvitation")
+.addEventListener("click",async()=>{
+  if(music.paused){
+    try{
+      await music.play();
+      musicButton.textContent="♫ Музыканы токтотуу";
+    }catch(e){}
+  }
+  document.getElementById("invitation")
+  .scrollIntoView({behavior:"smooth"});
+});
+
+const items=document.querySelectorAll(".reveal:not(.visible)");
+
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12});
+
+  items.forEach(item=>observer.observe(item));
+}else{
+  items.forEach(item=>item.classList.add("visible"));
+}
+</script>
+
+</body>
+</html>
